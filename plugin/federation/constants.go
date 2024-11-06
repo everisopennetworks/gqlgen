@@ -122,19 +122,19 @@ const federationVersion2Schema = `
 `
 
 var builtins = config.TypeMap{
-	"_Service": {
+	"_Federation_Service": {
 		Model: config.StringList{
-			"github.com/99designs/gqlgen/plugin/federation/fedruntime.Service",
+			"github.com/99designs/gqlgen/plugin/federation/fedruntime.Federation_Service",
 		},
 	},
-	"_Entity": {
+	"_Federation_Entity": {
 		Model: config.StringList{
-			"github.com/99designs/gqlgen/plugin/federation/fedruntime.Entity",
+			"github.com/99designs/gqlgen/plugin/federation/fedruntime.Federation_Entity",
 		},
 	},
-	"Entity": {
+	"Federation_Entity": {
 		Model: config.StringList{
-			"github.com/99designs/gqlgen/plugin/federation/fedruntime.Entity",
+			"github.com/99designs/gqlgen/plugin/federation/fedruntime.Federation_Entity",
 		},
 	},
 	"_Any": {

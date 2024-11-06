@@ -225,7 +225,7 @@ func (ec *executionContext) _Query__service(ctx context.Context, field graphql.C
 		}
 		return graphql.Null
 	}
-	res := resTmp.(fedruntime.Service)
+	res := resTmp.(fedruntime.Federation_Service)
 	fc.Result = res
 	return ec.marshalN_Service2githubᚗcomᚋ99designsᚋgqlgenᚋpluginᚋfederationᚋfedruntimeᚐService(ctx, field.Selections, res)
 }

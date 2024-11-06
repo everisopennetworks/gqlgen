@@ -18,9 +18,9 @@ var (
 	ErrTypeNotFound = errors.New("type not found")
 )
 
-func (ec *executionContext) __resolve__service(ctx context.Context) (fedruntime.Service, error) {
+func (ec *executionContext) __resolve__service(ctx context.Context) (fedruntime.Federation_Service, error) {
 	if ec.DisableIntrospection {
-		return fedruntime.Service{}, errors.New("federated introspection disabled")
+		return fedruntime.Federation_Service{}, errors.New("federated introspection disabled")
 	}
 
 	var sdl []string
@@ -32,13 +32,13 @@ func (ec *executionContext) __resolve__service(ctx context.Context) (fedruntime.
 		sdl = append(sdl, src.Input)
 	}
 
-	return fedruntime.Service{
+	return fedruntime.Federation_Service{
 		SDL: strings.Join(sdl, "\n"),
 	}, nil
 }
 
-func (ec *executionContext) __resolve_entities(ctx context.Context, representations []map[string]interface{}) []fedruntime.Entity {
-	list := make([]fedruntime.Entity, len(representations))
+func (ec *executionContext) __resolve_entities(ctx context.Context, representations []map[string]interface{}) []fedruntime.Federation_Entity {
+	list := make([]fedruntime.Federation_Entity, len(representations))
 
 	repsMap := ec.buildRepresentationGroups(ctx, representations)
 
@@ -105,7 +105,7 @@ func (ec *executionContext) resolveEntityGroup(
 	ctx context.Context,
 	typeName string,
 	reps []EntityWithIndex,
-	list []fedruntime.Entity,
+	list []fedruntime.Federation_Entity,
 ) {
 	if isMulti(typeName) {
 		err := ec.resolveManyEntities(ctx, typeName, reps, list)
@@ -146,7 +146,7 @@ func (ec *executionContext) resolveEntity(
 	ctx context.Context,
 	typeName string,
 	rep EntityRepresentation,
-) (e fedruntime.Entity, err error) {
+) (e fedruntime.Federation_Entity, err error) {
 	// we need to do our own panic handling, because we may be called in a
 	// goroutine, where the usual panic handling can't catch us
 	defer func() {
@@ -299,7 +299,7 @@ func (ec *executionContext) resolveManyEntities(
 	ctx context.Context,
 	typeName string,
 	reps []EntityWithIndex,
-	list []fedruntime.Entity,
+	list []fedruntime.Federation_Entity,
 ) (err error) {
 	// we need to do our own panic handling, because we may be called in a
 	// goroutine, where the usual panic handling can't catch us

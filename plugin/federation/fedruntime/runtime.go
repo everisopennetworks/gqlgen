@@ -3,12 +3,12 @@ package fedruntime
 // Service is the service object that the
 // generated.go file will return for the _service
 // query
-type Service struct {
+type Federation_Service struct {
 	SDL string `json:"sdl"`
 }
 
 // Everything with a @key implements this
-type Entity interface {
+type Federation_Entity interface {
 	IsEntity()
 }
 

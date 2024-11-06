@@ -2,6 +2,28 @@
 
 package model
 
+type Entity interface {
+	IsEntity()
+}
+
+type Entity0 struct {
+	FindHelloByName                            *Hello                        `json:"findHelloByName"`
+	FindHelloMultiSingleKeysByKey1AndKey2      *HelloMultiSingleKeys         `json:"findHelloMultiSingleKeysByKey1AndKey2"`
+	FindHelloWithErrorsByName                  *HelloWithErrors              `json:"findHelloWithErrorsByName"`
+	FindManyMultiHelloByNames                  []*MultiHello                 `json:"findManyMultiHelloByNames,omitempty"`
+	FindManyMultiHelloMultipleRequiresByNames  []*MultiHelloMultipleRequires `json:"findManyMultiHelloMultipleRequiresByNames,omitempty"`
+	FindManyMultiHelloRequiresByNames          []*MultiHelloRequires         `json:"findManyMultiHelloRequiresByNames,omitempty"`
+	FindManyMultiHelloWithErrorByNames         []*MultiHelloWithError        `json:"findManyMultiHelloWithErrorByNames,omitempty"`
+	FindManyMultiPlanetRequiresNestedByNames   []*MultiPlanetRequiresNested  `json:"findManyMultiPlanetRequiresNestedByNames,omitempty"`
+	FindPlanetMultipleRequiresByName           *PlanetMultipleRequires       `json:"findPlanetMultipleRequiresByName"`
+	FindPlanetRequiresByName                   *PlanetRequires               `json:"findPlanetRequiresByName"`
+	FindPlanetRequiresNestedByName             *PlanetRequiresNested         `json:"findPlanetRequiresNestedByName"`
+	FindWorldByHelloNameAndFoo                 *World                        `json:"findWorldByHelloNameAndFoo"`
+	FindWorldNameByName                        *WorldName                    `json:"findWorldNameByName"`
+	FindWorldWithMultipleKeysByHelloNameAndFoo *WorldWithMultipleKeys        `json:"findWorldWithMultipleKeysByHelloNameAndFoo"`
+	FindWorldWithMultipleKeysByBar             *WorldWithMultipleKeys        `json:"findWorldWithMultipleKeysByBar"`
+}
+
 type Hello struct {
 	Name      string `json:"name"`
 	Secondary string `json:"secondary"`
@@ -131,3 +153,7 @@ type WorldWithMultipleKeys struct {
 }
 
 func (WorldWithMultipleKeys) IsEntity() {}
+
+type Service struct {
+	Sdl *string `json:"sdl,omitempty"`
+}
